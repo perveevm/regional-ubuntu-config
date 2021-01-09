@@ -36,3 +36,6 @@ sudo snap install intellij-idea-community --classic
 
 # Installing Eclipse
 sudo snap install --classic eclipse
+
+# Install gnome-tweak
+sudo apt install gnome-tweak-tool
