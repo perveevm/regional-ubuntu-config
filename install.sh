@@ -39,3 +39,10 @@ sudo snap install --classic eclipse
 
 # Install gnome-tweak
 sudo apt install gnome-tweak-tool
+
+# Installing dansguardian
+sudo add-apt-repository "deb http://security.ubuntu.com/ubuntu bionic-security main universe"
+sudo apt install dansguardian
+
+# Installing tinyproxy
+sudo apt install tinyproxy
