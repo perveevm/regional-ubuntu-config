@@ -1,38 +1,33 @@
 #!/bin/bash
 
 sudo apt update
-sudo apt upgrade
+sudo apt upgrade -y
 
 # Installing Google Chrome
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
 sudo apt update
-sudo apt install google-chrome-stable
-
-# Installing Codeblocks
-sudo apt install codeblocks
+sudo apt install google-chrome-stable -y
 
 # Installing compilers
-sudo apt install g++
-sudo apt install openjdk-11-jdk-headless
-sudo apt install fpc
+sudo apt install g++ -y
+sudo apt install openjdk-11-jdk-headless -y
+sudo apt install fpc -y
 
-# Installing PyCharm
+# Installing JetBrains IDEs
 sudo snap install pycharm-community --classic
-
-# Installing CLion
 sudo snap install clion --classic
+sudo snap install intellij-idea-community --classic
 
-# Installing Sublime Text 3
+# Installing text editors
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
 sudo apt-add-repository "deb https://download.sublimetext.com/ apt/stable/"
-sudo apt install sublime-text
+sudo apt install sublime-text -y
+sudo apt install vim -y
+sudo apt install geany -y
 
-# Installing Vim
-sudo apt install vim
-
-# Installing IntelliJ IDEA
-sudo snap install intellij-idea-community --classic
+# Installing Codeblocks
+sudo apt install codeblocks -y
 
 # Installing Eclipse
 sudo snap install --classic eclipse
@@ -40,9 +35,16 @@ sudo snap install --classic eclipse
 # Install gnome-tweak
 sudo apt install gnome-tweak-tool
 
-# Installing dansguardian
-sudo add-apt-repository "deb http://security.ubuntu.com/ubuntu bionic-security main universe"
-sudo apt install dansguardian
+# Modifying /etc/hosts
+sudo su
+echo "188.124.47.64 perveevm.ru www.perveevm.ru" >> /etc/hosts
+echo "188.124.47.64 ejudge.strategy48.ru www.ejudge.strategy48.ru" >> /etc/hosts
+echo "77.234.215.132 pcms.itmo.ru www.pcms.itmo.ru" >> /etc/hosts
+exit
 
-# Installing tinyproxy
-sudo apt install tinyproxy
+# Modifying /etc/nsswitch.conf in semi-automatic mode
+sudo vim /etc/nsswitch.conf
+
+# Disabling DNS
+sudo systemctl stop systemd-resolved
+sudo systemctl disable systemd-resolved
